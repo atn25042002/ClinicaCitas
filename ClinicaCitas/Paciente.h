@@ -275,6 +275,7 @@ namespace ClinicaCitas {
 			this->label4->Size = System::Drawing::Size(125, 25);
 			this->label4->TabIndex = 13;
 			this->label4->Text = L"Pacientes";
+			this->label4->Click += gcnew System::EventHandler(this, &Paciente::label4_Click);
 			// 
 			// Paciente
 			// 
@@ -341,13 +342,15 @@ namespace ClinicaCitas {
 			llenarData(p.PacCod, p.nombres, p.apellidos, p.telefono, i);
 		}
 	}
-		   private: System::Void llenarData(int p1, const char* p2, const char* p3, int p4, int i) {
-			   dgvPacientes->Rows->Add();
-			   dgvPacientes->Rows[i]->Cells[0]->Value = msclr::interop::marshal_as<String^>(std::to_string(p1));
-			   dgvPacientes->Rows[i]->Cells[1]->Value = msclr::interop::marshal_as<String^>(p2);
-			   dgvPacientes->Rows[i]->Cells[2]->Value = msclr::interop::marshal_as<String^>(p3);
-			   dgvPacientes->Rows[i]->Cells[3]->Value = msclr::interop::marshal_as<String^>(std::to_string(p4));
-		   }
+
+	private: System::Void llenarData(int p1, const char* p2, const char* p3, int p4, int i) {
+		dgvPacientes->Rows->Add();
+		dgvPacientes->Rows[i]->Cells[0]->Value = msclr::interop::marshal_as<String^>(std::to_string(p1));
+		dgvPacientes->Rows[i]->Cells[1]->Value = msclr::interop::marshal_as<String^>(p2);
+		dgvPacientes->Rows[i]->Cells[2]->Value = msclr::interop::marshal_as<String^>(p3);
+		dgvPacientes->Rows[i]->Cells[3]->Value = msclr::interop::marshal_as<String^>(std::to_string(p4));
+	}
+
 	private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -381,6 +384,8 @@ namespace ClinicaCitas {
 private: System::Void dgvPacientes_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 	
 	
+}
+private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

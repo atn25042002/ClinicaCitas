@@ -121,15 +121,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AgregarCita.cpp" />
     <ClCompile Include="AgregarPaciente.cpp" />
     <ClCompile Include="Citas.cpp" />
     <ClCompile Include="crudMedicoHorInterface.cpp" />
     <ClCompile Include="crudPacientes.cpp" />
     <ClCompile Include="Doctor.cpp" />
+    <ClCompile Include="Horario.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="Paciente.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AgregarCita.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="AgregarPaciente.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -141,6 +146,9 @@
     <ClInclude Include="Doctor.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Horario.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -149,6 +157,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AgregarCita.resx">
+      <DependentUpon>AgregarCita.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AgregarPaciente.resx">
       <DependentUpon>AgregarPaciente.h</DependentUpon>
     </EmbeddedResource>
@@ -157,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Doctor.resx">
       <DependentUpon>Doctor.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Horario.resx">
+      <DependentUpon>Horario.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>

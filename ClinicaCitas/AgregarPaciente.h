@@ -176,9 +176,11 @@ namespace ClinicaCitas {
 			// 
 			// button1
 			// 
+			this->button1->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->button1->Location = System::Drawing::Point(218, 235);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->Size = System::Drawing::Size(99, 33);
 			this->button1->TabIndex = 23;
 			this->button1->Text = L"Actualizar";
 			this->button1->UseVisualStyleBackColor = true;
@@ -186,9 +188,11 @@ namespace ClinicaCitas {
 			// 
 			// button2
 			// 
+			this->button2->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->button2->Location = System::Drawing::Point(44, 235);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(75, 23);
+			this->button2->Size = System::Drawing::Size(99, 33);
 			this->button2->TabIndex = 24;
 			this->button2->Text = L"Cancelar";
 			this->button2->UseVisualStyleBackColor = true;
@@ -212,6 +216,7 @@ namespace ClinicaCitas {
 			this->Controls->Add(this->label1);
 			this->Name = L"AgregarPaciente";
 			this->Text = L"AgregarPaciente";
+			this->Load += gcnew System::EventHandler(this, &AgregarPaciente::AgregarPaciente_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -236,6 +241,8 @@ private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e)
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
+}
+private: System::Void AgregarPaciente_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
