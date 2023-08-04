@@ -3,6 +3,7 @@
 #include "crudMediCoHorInterface.h"
 #include <string>
 #include <msclr/marshal_cppstd.h>
+#include <sstream>
 
 namespace ClinicaCitas {
 
@@ -12,6 +13,7 @@ namespace ClinicaCitas {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Runtime::InteropServices;
 
 	/// <summary>
 	/// Resumen de AgregarCita
@@ -43,9 +45,10 @@ namespace ClinicaCitas {
 
 	public: bool estaAgregando = true;
 
-	public: System::Windows::Forms::TextBox^ Tel;
+
+
 	private:
-	private: System::Windows::Forms::Label^ label5;
+
 	public:
 	private: System::Windows::Forms::Label^ label4;
 
@@ -56,17 +59,22 @@ namespace ClinicaCitas {
 	public:
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label1;
-	public: System::Windows::Forms::TextBox^ textBox1;
+
+	private:
+
 	private:
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::Button^ button4;
-	private: System::Windows::Forms::MonthCalendar^ monthCalendar1;
+	private: System::Windows::Forms::MonthCalendar^ mcfecha;
+
 	public: System::Windows::Forms::ComboBox^ cboPaciente;
 	private:
 
 	private: System::Windows::Forms::ComboBox^ cboMedico;
 	private: System::Windows::Forms::ComboBox^ cboEsp;
+	private: System::Windows::Forms::ComboBox^ cbohora;
+	private: System::Windows::Forms::ComboBox^ cboCons;
 	public:
 
 	public:
@@ -110,41 +118,20 @@ namespace ClinicaCitas {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->Tel = (gcnew System::Windows::Forms::TextBox());
-			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->monthCalendar1 = (gcnew System::Windows::Forms::MonthCalendar());
+			this->mcfecha = (gcnew System::Windows::Forms::MonthCalendar());
 			this->cboPaciente = (gcnew System::Windows::Forms::ComboBox());
 			this->cboMedico = (gcnew System::Windows::Forms::ComboBox());
 			this->cboEsp = (gcnew System::Windows::Forms::ComboBox());
+			this->cbohora = (gcnew System::Windows::Forms::ComboBox());
+			this->cboCons = (gcnew System::Windows::Forms::ComboBox());
 			this->SuspendLayout();
-			// 
-			// Tel
-			// 
-			this->Tel->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->Tel->Location = System::Drawing::Point(166, 191);
-			this->Tel->Name = L"Tel";
-			this->Tel->Size = System::Drawing::Size(235, 27);
-			this->Tel->TabIndex = 33;
-			// 
-			// label5
-			// 
-			this->label5->AutoSize = true;
-			this->label5->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(43, 194);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(84, 18);
-			this->label5->TabIndex = 32;
-			this->label5->Text = L"Telefono:";
 			// 
 			// label4
 			// 
@@ -192,21 +179,12 @@ namespace ClinicaCitas {
 			this->label1->Text = L"Medico:";
 			this->label1->Click += gcnew System::EventHandler(this, &AgregarCita::label1_Click);
 			// 
-			// textBox1
-			// 
-			this->textBox1->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->textBox1->Location = System::Drawing::Point(166, 222);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(235, 27);
-			this->textBox1->TabIndex = 37;
-			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(43, 225);
+			this->label6->Location = System::Drawing::Point(43, 194);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(108, 18);
 			this->label6->TabIndex = 36;
@@ -236,11 +214,11 @@ namespace ClinicaCitas {
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &AgregarCita::button4_Click);
 			// 
-			// monthCalendar1
+			// mcfecha
 			// 
-			this->monthCalendar1->Location = System::Drawing::Point(443, 114);
-			this->monthCalendar1->Name = L"monthCalendar1";
-			this->monthCalendar1->TabIndex = 40;
+			this->mcfecha->Location = System::Drawing::Point(443, 81);
+			this->mcfecha->Name = L"mcfecha";
+			this->mcfecha->TabIndex = 40;
 			// 
 			// cboPaciente
 			// 
@@ -287,21 +265,48 @@ namespace ClinicaCitas {
 			this->cboEsp->Size = System::Drawing::Size(235, 26);
 			this->cboEsp->TabIndex = 41;
 			// 
+			// cbohora
+			// 
+			this->cbohora->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->cbohora->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->cbohora->FormattingEnabled = true;
+			this->cbohora->Items->AddRange(gcnew cli::array< System::Object^  >(17) {
+				L"09:00 - 09:30", L"09:30 - 10:00", L"10:00 - 10:30",
+					L"10:30 - 11:00", L"11:00 - 11:30", L"11:30 - 12:00", L"12:00 - 12:30", L"12:30 - 13:00", L"13:00 - 13:30", L"13:30 - 14:00",
+					L"14:00 - 14:30", L"14:30 - 15:00", L"15:00 - 15:30", L"15:30 - 16:00", L"16:00 - 16:30", L"16:30 - 17:00", L"17:00 - 17:30"
+			});
+			this->cbohora->Location = System::Drawing::Point(475, 255);
+			this->cbohora->Name = L"cbohora";
+			this->cbohora->Size = System::Drawing::Size(199, 26);
+			this->cbohora->TabIndex = 44;
+			// 
+			// cboCons
+			// 
+			this->cboCons->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->cboCons->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->cboCons->FormattingEnabled = true;
+			this->cboCons->Items->AddRange(gcnew cli::array< System::Object^  >(6) { L"S1", L"S2", L"P1", L"P2", L"G1", L"G2" });
+			this->cboCons->Location = System::Drawing::Point(166, 194);
+			this->cboCons->Name = L"cboCons";
+			this->cboCons->Size = System::Drawing::Size(235, 26);
+			this->cboCons->TabIndex = 45;
+			// 
 			// AgregarCita
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(709, 368);
+			this->Controls->Add(this->cboCons);
+			this->Controls->Add(this->cbohora);
 			this->Controls->Add(this->cboPaciente);
 			this->Controls->Add(this->cboMedico);
 			this->Controls->Add(this->cboEsp);
-			this->Controls->Add(this->monthCalendar1);
+			this->Controls->Add(this->mcfecha);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button4);
-			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label6);
-			this->Controls->Add(this->Tel);
-			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
@@ -325,18 +330,27 @@ private: System::Void cboPac_SelectedIndexChanged(System::Object^ sender, System
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
 }
-private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-	/*
-	std::string codigo = msclr::interop::marshal_as<std::string>(this->Cod->Text);
-	std::string nombre = msclr::interop::marshal_as<std::string>(this->Nom->Text);
-	std::string apellido = msclr::interop::marshal_as<std::string>(this->Ape->Text);
-	std::string telefono = msclr::interop::marshal_as<std::string>(this->Tel->Text);
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {	
+	std::string nomMed = msclr::interop::marshal_as<std::string>(this->cboMedico->Text);
+	std::string nomPac = msclr::interop::marshal_as<std::string>(this->cboPaciente->Text);
+	std::string esp = msclr::interop::marshal_as<std::string>(this->cboEsp->Text);
+	std::string consul = msclr::interop::marshal_as<std::string>(this->cboCons->Text);
+	std::string hors = msclr::interop::marshal_as<std::string>(this->cbohora->Text);
+	DateTime fechaSeleccionada = this->mcfecha->SelectionStart;
+	Estructura::FechaH fecha = {};
+	fecha.anio = fechaSeleccionada.Year;
+	fecha.mes = fechaSeleccionada.Month;
+	fecha.dia = fechaSeleccionada.Day;
+	fecha.hora = stoi(hors.substr(0, 2));
+	fecha.minutos = stoi(hors.substr(3, 5));
 	if (estaAgregando) {
-		Crear(stoi(codigo), nombre.c_str(), apellido.c_str(), stoi(telefono));
+		crearMedH(1, nomMed.c_str(), nomPac.c_str(), 1, esp.c_str(),fecha, consul.c_str());
+		//String^ resultado = String::Concat(fecha.hora, " - ", fecha.minutos);
+		//label4->Text = resultado;
 	}
 	else {
-		Actualizar(stoi(codigo), nombre.c_str(), apellido.c_str(), stoi(telefono));
-	}*/
+		//Actualizar(stoi(codigo), nombre.c_str(), apellido.c_str(), stoi(telefono));
+	}
 	this->Close();
 }
 };

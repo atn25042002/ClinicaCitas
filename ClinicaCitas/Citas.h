@@ -65,13 +65,18 @@ namespace ClinicaCitas {
 
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
 
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ FechaHora;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Consultorio;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Pac;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Esp;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Med;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Cod;
+
+
+
+
+
+
 	private: System::Windows::Forms::DataGridView^ dgvCitas;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Med;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Esp;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Pac;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Consultorio;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ FechaHora;
 
 
 
@@ -115,13 +120,12 @@ namespace ClinicaCitas {
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			this->FechaHora = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Consultorio = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Pac = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Esp = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Med = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Cod = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgvCitas = (gcnew System::Windows::Forms::DataGridView());
+			this->Med = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Esp = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Pac = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Consultorio = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->FechaHora = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvCitas))->BeginInit();
 			this->SuspendLayout();
@@ -206,6 +210,7 @@ namespace ClinicaCitas {
 			this->label1->Size = System::Drawing::Size(64, 23);
 			this->label1->TabIndex = 7;
 			this->label1->Text = L"Citas";
+			this->label1->Click += gcnew System::EventHandler(this, &Citas::label1_Click);
 			// 
 			// button2
 			// 
@@ -255,50 +260,13 @@ namespace ClinicaCitas {
 			this->pictureBox1->TabStop = false;
 			this->pictureBox1->Click += gcnew System::EventHandler(this, &Citas::pictureBox1_Click);
 			// 
-			// FechaHora
-			// 
-			this->FechaHora->HeaderText = L"Fecha y Hora";
-			this->FechaHora->Name = L"FechaHora";
-			this->FechaHora->ReadOnly = true;
-			// 
-			// Consultorio
-			// 
-			this->Consultorio->HeaderText = L"Consultorio";
-			this->Consultorio->Name = L"Consultorio";
-			this->Consultorio->ReadOnly = true;
-			// 
-			// Pac
-			// 
-			this->Pac->HeaderText = L"Pac";
-			this->Pac->Name = L"Pac";
-			this->Pac->ReadOnly = true;
-			// 
-			// Esp
-			// 
-			this->Esp->HeaderText = L"Esp";
-			this->Esp->Name = L"Esp";
-			this->Esp->ReadOnly = true;
-			// 
-			// Med
-			// 
-			this->Med->HeaderText = L"Med";
-			this->Med->Name = L"Med";
-			this->Med->ReadOnly = true;
-			// 
-			// Cod
-			// 
-			this->Cod->HeaderText = L"Cod";
-			this->Cod->Name = L"Cod";
-			this->Cod->ReadOnly = true;
-			this->Cod->Width = 50;
-			// 
 			// dgvCitas
 			// 
 			this->dgvCitas->AllowUserToAddRows = false;
 			this->dgvCitas->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
-			this->dgvCitas->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
-				this->Cod, this->Med,
-					this->Esp, this->Pac, this->Consultorio, this->FechaHora
+			this->dgvCitas->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
+				this->Med, this->Esp,
+					this->Pac, this->Consultorio, this->FechaHora
 			});
 			this->dgvCitas->Location = System::Drawing::Point(46, 159);
 			this->dgvCitas->MultiSelect = false;
@@ -308,6 +276,36 @@ namespace ClinicaCitas {
 			this->dgvCitas->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::CellSelect;
 			this->dgvCitas->Size = System::Drawing::Size(588, 187);
 			this->dgvCitas->TabIndex = 17;
+			// 
+			// Med
+			// 
+			this->Med->HeaderText = L"Med";
+			this->Med->Name = L"Med";
+			this->Med->ReadOnly = true;
+			// 
+			// Esp
+			// 
+			this->Esp->HeaderText = L"Esp";
+			this->Esp->Name = L"Esp";
+			this->Esp->ReadOnly = true;
+			// 
+			// Pac
+			// 
+			this->Pac->HeaderText = L"Pac";
+			this->Pac->Name = L"Pac";
+			this->Pac->ReadOnly = true;
+			// 
+			// Consultorio
+			// 
+			this->Consultorio->HeaderText = L"Consultorio";
+			this->Consultorio->Name = L"Consultorio";
+			this->Consultorio->ReadOnly = true;
+			// 
+			// FechaHora
+			// 
+			this->FechaHora->HeaderText = L"Fecha y Hora";
+			this->FechaHora->Name = L"FechaHora";
+			this->FechaHora->ReadOnly = true;
 			// 
 			// Citas
 			// 
@@ -337,6 +335,7 @@ namespace ClinicaCitas {
 #pragma endregion
 	private: System::Void Citas_Load(System::Object^ sender, System::EventArgs^ e) {
 		LoadPacientes();
+		LoadCitas();
 	}
 
 	private: System::Void LoadPacientes() {
@@ -353,14 +352,26 @@ namespace ClinicaCitas {
 		}
 	}
 
-	private: System::Void llenarData(int cod, const char* medNom, const char* esp, const char* pacNom, const char* cons, const char* fecha, int i) {
+	private: System::Void LoadCitas() {
+		//std::vector<Paciente> v= Leer();
+		//std::cout <<  "--->" << Leer()[0].nombres << std::endl;
+		std::vector<Estructura::MedicoH> citas = leerMedH();
+		//String^ net = msclr::interop::marshal_as<String^>(Leer()[0].nombres
+		for (int i = 0; i < citas.size(); i++) {
+			Estructura::MedicoH c = citas[i];
+			Estructura::FechaH fecha = c.fechaCita;
+			String^ fechatxt = String::Concat(fecha.hora , ":" , fecha.minutos, "  ", fecha.anio, " - ", fecha.mes, " - ", fecha.dia);
+			llenarData(c.medNom, c.medEsp, c.pacNom, c.medConsultorio, fechatxt, i);
+		}
+	}
+
+	private: System::Void llenarData(const char* medNom, const char* esp, const char* pacNom, const char* cons, String^ fecha, int i) {
 		dgvCitas->Rows->Add();
-		dgvCitas->Rows[i]->Cells[0]->Value = msclr::interop::marshal_as<String^>(std::to_string(cod));
-		dgvCitas->Rows[i]->Cells[1]->Value = msclr::interop::marshal_as<String^>(medNom);
-		dgvCitas->Rows[i]->Cells[2]->Value = msclr::interop::marshal_as<String^>(esp);
-		dgvCitas->Rows[i]->Cells[3]->Value = msclr::interop::marshal_as<String^>(pacNom);
-		dgvCitas->Rows[i]->Cells[4]->Value = msclr::interop::marshal_as<String^>(cons);
-		dgvCitas->Rows[i]->Cells[5]->Value = msclr::interop::marshal_as<String^>(fecha);
+		dgvCitas->Rows[i]->Cells[0]->Value = msclr::interop::marshal_as<String^>(medNom);
+		dgvCitas->Rows[i]->Cells[1]->Value = msclr::interop::marshal_as<String^>(esp);
+		dgvCitas->Rows[i]->Cells[2]->Value = msclr::interop::marshal_as<String^>(pacNom);
+		dgvCitas->Rows[i]->Cells[3]->Value = msclr::interop::marshal_as<String^>(cons);
+		dgvCitas->Rows[i]->Cells[4]->Value = fecha;
 	}
 
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -380,8 +391,7 @@ namespace ClinicaCitas {
 		}		
 		obj.ShowDialog();
 		dgvCitas->Rows->Clear();
-		cboPacientes->Items->Clear();
-		LoadPacientes();
+		LoadCitas();
 	}
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	int i = dgvCitas->CurrentCell->RowIndex;
@@ -391,7 +401,7 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	//obj.Cod->Text = dgvCitas->Rows[i]->Cells[0]->Value->ToString();
 	obj.ShowDialog();
 	dgvCitas->Rows->Clear();
-	LoadPacientes();
+	LoadCitas();
 }
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 	int i = dgvCitas->CurrentCell->RowIndex;
@@ -401,8 +411,10 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 	if (MessageBox::Show("¿Estas seguro de eliminar?", "Confirm Delete!!", MessageBoxButtons::YesNo) == System::Windows::Forms::DialogResult::Yes) {
 		Borrar(i + 1);
 		dgvCitas->Rows->Clear();
-		LoadPacientes();
+		LoadCitas();
 	}
+}
+private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

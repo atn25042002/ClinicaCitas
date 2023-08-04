@@ -21,7 +21,7 @@ std::vector<Estructura::FechaH> llenarTurnosMes(int anio, int mes) {
 	cout << "entro fucnion" << endl;
 	std::vector<Estructura::FechaH> turnosMes;
 	//Fecha de inicio
-	Estructura::FechaH fechaInicio;
+	Estructura::FechaH fechaInicio = {};
 	fechaInicio.minutos = 0;
 	fechaInicio.hora = 9;
 	fechaInicio.dia = 1;
@@ -47,7 +47,7 @@ std::vector<Estructura::FechaH> llenarTurnosMes(int anio, int mes) {
 		ultimoDia = 31;
 	}
 	// Definir la fecha de fin: último día del mes a las 5:00 pm
-	Estructura::FechaH fechaFin;
+	Estructura::FechaH fechaFin = {};
 	fechaFin.minutos = 0;
 	fechaFin.hora = 17;
 	fechaFin.dia = ultimoDia;
@@ -103,12 +103,11 @@ std::vector<Estructura::MedicoH> leerMedH() {
 	return medicosH;
 }
 
-void crearMedH(int cod, const char* nombreMed, const char* nombrePac, int medCmp, const char* medEsp, Estructura::FechaH f, const char* medConsultorio, char medEstadoDis) {//sin const no funciona al pasar puntero, estas
+void crearMedH(int cod, const char* nombreMed, const char* nombrePac, int medCmp, const char* medEsp, Estructura::FechaH f, const char* medConsultorio) {//sin const no funciona al pasar puntero, estas
 	//intentando modificar un dato que fijo como char[50]
 
 	FILE* archivo = fopen(nombre_archivoMedH, "a+b");
-	char res;
-	Estructura::MedicoH medico;
+	Estructura::MedicoH medico = {};
 	fflush(stdin);//limpia buffer de entrada y salida
 	medico.medCod = cod;
 	strcpy(medico.medNom, nombreMed);
@@ -117,7 +116,6 @@ void crearMedH(int cod, const char* nombreMed, const char* nombrePac, int medCmp
 	strcpy(medico.medEsp, medEsp);
 	medico.fechaCita = f;
 	strcpy(medico.medConsultorio, medConsultorio);
-	medEstadoDis = medEstadoDis;
 	fwrite(&medico, sizeof(Estructura::MedicoH), 1, archivo);
 	fclose(archivo);
 }
