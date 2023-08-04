@@ -1,6 +1,7 @@
 #pragma once
 #include "crudPacientesInterface.h"
 #include <string>
+#include <list>
 #include <msclr/marshal_cppstd.h>
 
 namespace ClinicaCitas {
@@ -11,6 +12,8 @@ namespace ClinicaCitas {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace std;
+	using namespace System::Collections::Generic;
 
 	/// <summary>
 	/// Resumen de AgregarPaciente
@@ -38,6 +41,7 @@ namespace ClinicaCitas {
 			}
 		}
 	public: bool estaAgregando = true;
+	public: List<String^>^ cods = gcnew List<String^>();
 	private: System::Windows::Forms::Label^ label4;
 	public: System::Windows::Forms::TextBox^ Ape;
 	protected:
@@ -68,6 +72,7 @@ namespace ClinicaCitas {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(AgregarPaciente::typeid));
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->Ape = (gcnew System::Windows::Forms::TextBox());
 			this->Nom = (gcnew System::Windows::Forms::TextBox());
@@ -86,7 +91,7 @@ namespace ClinicaCitas {
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Verdana", 15.75F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Underline)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(130, 26);
+			this->label4->Location = System::Drawing::Point(175, 22);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(113, 25);
 			this->label4->TabIndex = 20;
@@ -97,8 +102,9 @@ namespace ClinicaCitas {
 			this->Ape->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->Ape->Location = System::Drawing::Point(131, 134);
+			this->Ape->MaxLength = 50;
 			this->Ape->Name = L"Ape";
-			this->Ape->Size = System::Drawing::Size(162, 27);
+			this->Ape->Size = System::Drawing::Size(252, 27);
 			this->Ape->TabIndex = 19;
 			// 
 			// Nom
@@ -106,8 +112,9 @@ namespace ClinicaCitas {
 			this->Nom->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->Nom->Location = System::Drawing::Point(131, 103);
+			this->Nom->MaxLength = 50;
 			this->Nom->Name = L"Nom";
-			this->Nom->Size = System::Drawing::Size(162, 27);
+			this->Nom->Size = System::Drawing::Size(252, 27);
 			this->Nom->TabIndex = 18;
 			// 
 			// Cod
@@ -116,8 +123,9 @@ namespace ClinicaCitas {
 				static_cast<System::Byte>(0)));
 			this->Cod->Location = System::Drawing::Point(131, 73);
 			this->Cod->Name = L"Cod";
-			this->Cod->Size = System::Drawing::Size(162, 27);
+			this->Cod->Size = System::Drawing::Size(252, 27);
 			this->Cod->TabIndex = 17;
+			this->Cod->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &AgregarPaciente::Cod_KeyPress);
 			// 
 			// label3
 			// 
@@ -157,8 +165,9 @@ namespace ClinicaCitas {
 			this->Tel->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->Tel->Location = System::Drawing::Point(131, 167);
+			this->Tel->MaxLength = 10;
 			this->Tel->Name = L"Tel";
-			this->Tel->Size = System::Drawing::Size(162, 27);
+			this->Tel->Size = System::Drawing::Size(252, 27);
 			this->Tel->TabIndex = 22;
 			this->Tel->TextChanged += gcnew System::EventHandler(this, &AgregarPaciente::textBox4_TextChanged);
 			// 
@@ -178,7 +187,7 @@ namespace ClinicaCitas {
 			// 
 			this->button1->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(218, 235);
+			this->button1->Location = System::Drawing::Point(257, 223);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(99, 33);
 			this->button1->TabIndex = 23;
@@ -190,7 +199,7 @@ namespace ClinicaCitas {
 			// 
 			this->button2->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(44, 235);
+			this->button2->Location = System::Drawing::Point(91, 223);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(99, 33);
 			this->button2->TabIndex = 24;
@@ -202,7 +211,9 @@ namespace ClinicaCitas {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(363, 280);
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->ClientSize = System::Drawing::Size(427, 280);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->Tel);
@@ -214,6 +225,7 @@ namespace ClinicaCitas {
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"AgregarPaciente";
 			this->Text = L"AgregarPaciente";
 			this->Load += gcnew System::EventHandler(this, &AgregarPaciente::AgregarPaciente_Load);
@@ -232,7 +244,13 @@ private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e)
 		std::string apellido = msclr::interop::marshal_as<std::string>(this->Ape->Text);
 		std::string telefono = msclr::interop::marshal_as<std::string>(this->Tel->Text);
 		if (estaAgregando) {
-			Crear(stoi(codigo), nombre.c_str(), apellido.c_str(), stoi(telefono));
+			if (cods->Contains(this->Cod->Text)) {
+				MessageBox::Show("Ya existe un paciente registrado con ese código", "Código Repetido", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				return;
+			}
+			else {
+				Crear(stoi(codigo), nombre.c_str(), apellido.c_str(), stoi(telefono));
+			}			
 		}
 		else {
 			Actualizar(stoi(codigo), nombre.c_str(), apellido.c_str(), stoi(telefono));
@@ -243,6 +261,12 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	this->Close();
 }
 private: System::Void AgregarPaciente_Load(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void Cod_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
+	if (!Char::IsDigit(e->KeyChar) && e->KeyChar != '\b') {
+		// Si no es un dígito ni una tecla especial, cancela el evento KeyPress para evitar que se ingrese el carácter
+		e->Handled = true;
+	}
 }
 };
 }

@@ -55,7 +55,7 @@ namespace ClinicaCitas {
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Button^ button3;
-	private: System::Windows::Forms::Button^ button4;
+
 
 
 
@@ -77,6 +77,11 @@ namespace ClinicaCitas {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Pac;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Consultorio;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ FechaHora;
+
+
+
+
+
 
 
 
@@ -118,7 +123,6 @@ namespace ClinicaCitas {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->dgvCitas = (gcnew System::Windows::Forms::DataGridView());
 			this->Med = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -144,6 +148,7 @@ namespace ClinicaCitas {
 			// 
 			// cboPacientes
 			// 
+			this->cboPacientes->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->cboPacientes->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->cboPacientes->FormattingEnabled = true;
@@ -151,10 +156,10 @@ namespace ClinicaCitas {
 			this->cboPacientes->Name = L"cboPacientes";
 			this->cboPacientes->Size = System::Drawing::Size(281, 26);
 			this->cboPacientes->TabIndex = 11;
-			this->cboPacientes->Text = L"Seleccione Paciente";
 			// 
 			// comboBox2
 			// 
+			this->comboBox2->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->comboBox2->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->comboBox2->FormattingEnabled = true;
@@ -168,10 +173,10 @@ namespace ClinicaCitas {
 			this->comboBox2->Name = L"comboBox2";
 			this->comboBox2->Size = System::Drawing::Size(281, 26);
 			this->comboBox2->TabIndex = 10;
-			this->comboBox2->Text = L"Seleccione Médico";
 			// 
 			// comboBox1
 			// 
+			this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->comboBox1->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->comboBox1->FormattingEnabled = true;
@@ -184,7 +189,6 @@ namespace ClinicaCitas {
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(281, 26);
 			this->comboBox1->TabIndex = 9;
-			this->comboBox1->Text = L"Seleccione Especialidad";
 			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &Citas::comboBox1_SelectedIndexChanged);
 			// 
 			// label2
@@ -216,7 +220,7 @@ namespace ClinicaCitas {
 			// 
 			this->button2->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(249, 376);
+			this->button2->Location = System::Drawing::Point(311, 376);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(93, 27);
 			this->button2->TabIndex = 14;
@@ -228,25 +232,13 @@ namespace ClinicaCitas {
 			// 
 			this->button3->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button3->Location = System::Drawing::Point(374, 376);
+			this->button3->Location = System::Drawing::Point(513, 376);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(93, 27);
 			this->button3->TabIndex = 15;
 			this->button3->Text = L"Borrar";
 			this->button3->UseVisualStyleBackColor = true;
 			this->button3->Click += gcnew System::EventHandler(this, &Citas::button3_Click);
-			// 
-			// button4
-			// 
-			this->button4->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button4->Location = System::Drawing::Point(491, 376);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(93, 27);
-			this->button4->TabIndex = 16;
-			this->button4->Text = L"A";
-			this->button4->UseVisualStyleBackColor = true;
-			this->button4->Click += gcnew System::EventHandler(this, &Citas::button4_Click);
 			// 
 			// pictureBox1
 			// 
@@ -274,7 +266,7 @@ namespace ClinicaCitas {
 			this->dgvCitas->ReadOnly = true;
 			this->dgvCitas->RowHeadersWidthSizeMode = System::Windows::Forms::DataGridViewRowHeadersWidthSizeMode::DisableResizing;
 			this->dgvCitas->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::CellSelect;
-			this->dgvCitas->Size = System::Drawing::Size(588, 187);
+			this->dgvCitas->Size = System::Drawing::Size(610, 199);
 			this->dgvCitas->TabIndex = 17;
 			// 
 			// Med
@@ -303,6 +295,7 @@ namespace ClinicaCitas {
 			// 
 			// FechaHora
 			// 
+			this->FechaHora->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::Fill;
 			this->FechaHora->HeaderText = L"Fecha y Hora";
 			this->FechaHora->Name = L"FechaHora";
 			this->FechaHora->ReadOnly = true;
@@ -311,10 +304,10 @@ namespace ClinicaCitas {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::PaleGoldenrod;
 			this->ClientSize = System::Drawing::Size(696, 434);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->dgvCitas);
-			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
@@ -323,6 +316,7 @@ namespace ClinicaCitas {
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"Citas";
 			this->Text = L"Citas";
 			this->Load += gcnew System::EventHandler(this, &Citas::Citas_Load);

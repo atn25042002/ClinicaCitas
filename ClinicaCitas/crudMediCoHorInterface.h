@@ -13,6 +13,7 @@ namespace Estructura {
         FechaH() = default;
     };
     struct MedicoH {
+        int citaCod;
         int medCod;//es su DNI
         char medNom[100];
         char pacNom[100];
@@ -27,4 +28,6 @@ namespace Estructura {
 }
 std::vector<Estructura::MedicoH> leerMedH();
 void crearMedH(int cod, const char* nombreMed,const char* nombrePac, int medCmp, const char* medEsp, Estructura::FechaH f, const char* medConsultorio);
+void ActualizarMedH(int cod, const char* nombreMed, const char* nombrePac, int medCmp, const char* medEsp, Estructura::FechaH f, const char* medConsultorio);
+void BorrarMedH(int id);
 #endif //

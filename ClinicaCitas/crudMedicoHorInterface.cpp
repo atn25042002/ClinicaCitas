@@ -109,7 +109,7 @@ void crearMedH(int cod, const char* nombreMed, const char* nombrePac, int medCmp
 	FILE* archivo = fopen(nombre_archivoMedH, "a+b");
 	Estructura::MedicoH medico = {};
 	fflush(stdin);//limpia buffer de entrada y salida
-	medico.medCod = cod;
+	medico.citaCod = cod;
 	strcpy(medico.medNom, nombreMed);
 	strcpy(medico.pacNom, nombrePac);
 	medico.medCmp = medCmp;
@@ -118,4 +118,52 @@ void crearMedH(int cod, const char* nombreMed, const char* nombrePac, int medCmp
 	strcpy(medico.medConsultorio, medConsultorio);
 	fwrite(&medico, sizeof(Estructura::MedicoH), 1, archivo);
 	fclose(archivo);
+}
+
+void ActualizarMedH(int cod, const char* nombreMed, const char* nombrePac, int medCmp, const char* medEsp, Estructura::FechaH f, const char* medConsultorio) {
+	
+	cod--;//Cuento desde 0
+	FILE* archivo = fopen(nombre_archivoMedH, "r+b");
+	Estructura::MedicoH medicoh;
+	//Los id tienen que ser secuenciales
+	//Me ubico en el id correcto
+	fseek(archivo, cod * sizeof(Estructura::MedicoH), SEEK_SET);
+	medicoh.citaCod = ++cod;
+	strcpy(medicoh.medNom, nombreMed);
+	strcpy(medicoh.pacNom, nombrePac);
+	strcpy(medicoh.medEsp, medEsp);
+	medicoh.fechaCita = f;
+	strcpy(medicoh.medConsultorio, medConsultorio);
+	fwrite(&medicoh, sizeof(Estructura::MedicoH), 1, archivo);
+	fclose(archivo);
+	leerMedH();
+}
+
+void BorrarMedH(int id) {
+	const char* nombre_archivo_temp = "medicosH_temp.dat";
+	FILE* archivo_temp = fopen(nombre_archivo_temp, "w+b");
+	FILE* archivo = fopen(nombre_archivoMedH, "rb");
+	Estructura::MedicoH medicoh;
+	int id_n = 0;
+	//Escribo en un archivo temporal los que no coinciden con el indice
+	id--;
+	while (fread(&medicoh, sizeof(Estructura::MedicoH), 1, archivo)) {
+		if (id_n != id) {
+			fwrite(&medicoh, sizeof(Estructura::MedicoH), 1, archivo_temp);
+		}
+		id_n++;
+	}
+	fclose(archivo);
+	fclose(archivo_temp);
+
+	archivo_temp = fopen(nombre_archivo_temp, "rb");
+	archivo = fopen(nombre_archivoMedH, "wb");
+	//Regreso todos los registros en archivo_temp a archivo
+	while (fread(&medicoh, sizeof(Estructura::MedicoH), 1, archivo_temp)) {
+		fwrite(&medicoh, sizeof(Estructura::MedicoH), 1, archivo);
+
+	}
+	fclose(archivo);
+	fclose(archivo_temp);
+	leerMedH();
 }

@@ -166,6 +166,7 @@ namespace ClinicaCitas {
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->dgvDoctor);
 			this->Controls->Add(this->label1);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"Doctor";
 			this->Text = L"Rotacion";
 			this->Load += gcnew System::EventHandler(this, &Doctor::Doctor_Load);

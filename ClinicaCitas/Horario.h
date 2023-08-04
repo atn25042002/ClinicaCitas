@@ -53,6 +53,7 @@ namespace ClinicaCitas {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Horario::typeid));
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
@@ -121,6 +122,7 @@ namespace ClinicaCitas {
 			this->Controls->Add(this->comboBox2);
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->label4);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"Horario";
 			this->Text = L"Horario";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();

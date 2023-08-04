@@ -5,6 +5,7 @@
 #include <iostream>
 #include <msclr/marshal_cppstd.h>
 #include <string>
+#include <list>
 #include "AgregarPaciente.h"
 
 namespace ClinicaCitas {
@@ -15,6 +16,7 @@ namespace ClinicaCitas {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Collections::Generic;
 
 	/// <summary>
 	/// Resumen de Paciente
@@ -43,16 +45,19 @@ namespace ClinicaCitas {
 		}
 
 	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::TextBox^ textBox2;
-	private: System::Windows::Forms::TextBox^ textBox3;
+
+
+	private: System::Windows::Forms::TextBox^ txtcod;
+
+
+
+
+
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
 	private: System::Windows::Forms::Button^ button1;
 
 	private: System::Windows::Forms::Button^ button3;
-	private: System::Windows::Forms::Button^ button4;
+
 	private: System::Windows::Forms::DataGridView^ dgvPacientes;
 
 
@@ -61,10 +66,21 @@ namespace ClinicaCitas {
 
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Label^ label4;
+
+
+
+
+	private: System::Windows::Forms::Button^ button5;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Codigo;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
+
+
+
+
+
+
 
 
 	protected:
@@ -84,15 +100,10 @@ namespace ClinicaCitas {
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Paciente::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+			this->txtcod = (gcnew System::Windows::Forms::TextBox());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->dgvPacientes = (gcnew System::Windows::Forms::DataGridView());
 			this->Codigo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -100,6 +111,7 @@ namespace ClinicaCitas {
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->button5 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvPacientes))->BeginInit();
 			this->SuspendLayout();
@@ -109,66 +121,23 @@ namespace ClinicaCitas {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(172, 72);
+			this->label1->Location = System::Drawing::Point(133, 77);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(71, 18);
 			this->label1->TabIndex = 1;
 			this->label1->Text = L"Código:";
 			this->label1->Click += gcnew System::EventHandler(this, &Paciente::label1_Click);
 			// 
-			// label2
+			// txtcod
 			// 
-			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->txtcod->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(168, 102);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(78, 18);
-			this->label2->TabIndex = 2;
-			this->label2->Text = L"Nombre:";
-			this->label2->Click += gcnew System::EventHandler(this, &Paciente::label2_Click);
-			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(162, 133);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(81, 18);
-			this->label3->TabIndex = 3;
-			this->label3->Text = L"Apellido:";
-			this->label3->Click += gcnew System::EventHandler(this, &Paciente::label3_Click);
-			// 
-			// textBox1
-			// 
-			this->textBox1->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->textBox1->Location = System::Drawing::Point(249, 69);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(162, 27);
-			this->textBox1->TabIndex = 4;
-			this->textBox1->TextChanged += gcnew System::EventHandler(this, &Paciente::textBox1_TextChanged);
-			// 
-			// textBox2
-			// 
-			this->textBox2->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->textBox2->Location = System::Drawing::Point(249, 99);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(162, 27);
-			this->textBox2->TabIndex = 5;
-			this->textBox2->TextChanged += gcnew System::EventHandler(this, &Paciente::textBox2_TextChanged);
-			// 
-			// textBox3
-			// 
-			this->textBox3->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->textBox3->Location = System::Drawing::Point(249, 130);
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(162, 27);
-			this->textBox3->TabIndex = 6;
-			this->textBox3->TextChanged += gcnew System::EventHandler(this, &Paciente::textBox3_TextChanged);
+			this->txtcod->Location = System::Drawing::Point(210, 74);
+			this->txtcod->Name = L"txtcod";
+			this->txtcod->Size = System::Drawing::Size(162, 27);
+			this->txtcod->TabIndex = 4;
+			this->txtcod->TextChanged += gcnew System::EventHandler(this, &Paciente::textBox1_TextChanged);
+			this->txtcod->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &Paciente::txtcod_KeyPress);
 			// 
 			// pictureBox1
 			// 
@@ -206,29 +175,21 @@ namespace ClinicaCitas {
 			this->button3->UseVisualStyleBackColor = true;
 			this->button3->Click += gcnew System::EventHandler(this, &Paciente::button3_Click);
 			// 
-			// button4
-			// 
-			this->button4->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button4->Location = System::Drawing::Point(234, 330);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(139, 34);
-			this->button4->TabIndex = 11;
-			this->button4->Text = L"Actualizar";
-			this->button4->UseVisualStyleBackColor = true;
-			this->button4->Click += gcnew System::EventHandler(this, &Paciente::button4_Click);
-			// 
 			// dgvPacientes
 			// 
+			this->dgvPacientes->AllowUserToAddRows = false;
+			this->dgvPacientes->AllowUserToDeleteRows = false;
 			this->dgvPacientes->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvPacientes->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
 				this->Codigo,
 					this->Column2, this->Column3, this->Column4
 			});
-			this->dgvPacientes->Location = System::Drawing::Point(52, 170);
+			this->dgvPacientes->Location = System::Drawing::Point(52, 116);
 			this->dgvPacientes->MultiSelect = false;
 			this->dgvPacientes->Name = L"dgvPacientes";
-			this->dgvPacientes->Size = System::Drawing::Size(453, 109);
+			this->dgvPacientes->ReadOnly = true;
+			this->dgvPacientes->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::CellSelect;
+			this->dgvPacientes->Size = System::Drawing::Size(461, 163);
 			this->dgvPacientes->TabIndex = 12;
 			this->dgvPacientes->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Paciente::dgvPacientes_CellClick);
 			this->dgvPacientes->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Paciente::dataGridView1_CellContentClick);
@@ -237,21 +198,29 @@ namespace ClinicaCitas {
 			// 
 			this->Codigo->HeaderText = L"Código";
 			this->Codigo->Name = L"Codigo";
+			this->Codigo->ReadOnly = true;
+			this->Codigo->Width = 50;
 			// 
 			// Column2
 			// 
 			this->Column2->HeaderText = L"Apellidos";
 			this->Column2->Name = L"Column2";
+			this->Column2->ReadOnly = true;
+			this->Column2->Width = 130;
 			// 
 			// Column3
 			// 
 			this->Column3->HeaderText = L"Nombres";
 			this->Column3->Name = L"Column3";
+			this->Column3->ReadOnly = true;
+			this->Column3->Width = 130;
 			// 
 			// Column4
 			// 
 			this->Column4->HeaderText = L"Teléfono";
 			this->Column4->Name = L"Column4";
+			this->Column4->ReadOnly = true;
+			this->Column4->Width = 108;
 			// 
 			// button2
 			// 
@@ -277,24 +246,35 @@ namespace ClinicaCitas {
 			this->label4->Text = L"Pacientes";
 			this->label4->Click += gcnew System::EventHandler(this, &Paciente::label4_Click);
 			// 
+			// button5
+			// 
+			this->button5->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button5->Location = System::Drawing::Point(378, 74);
+			this->button5->Name = L"button5";
+			this->button5->Size = System::Drawing::Size(75, 26);
+			this->button5->TabIndex = 14;
+			this->button5->Text = L"Buscar";
+			this->button5->UseVisualStyleBackColor = true;
+			this->button5->Click += gcnew System::EventHandler(this, &Paciente::button5_Click);
+			// 
 			// Paciente
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
 			this->ClientSize = System::Drawing::Size(587, 384);
+			this->Controls->Add(this->button5);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->dgvPacientes);
-			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->pictureBox1);
-			this->Controls->Add(this->textBox3);
-			this->Controls->Add(this->textBox2);
-			this->Controls->Add(this->textBox1);
-			this->Controls->Add(this->label3);
-			this->Controls->Add(this->label2);
+			this->Controls->Add(this->txtcod);
 			this->Controls->Add(this->label1);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"Paciente";
 			this->Text = L"Paciente";
 			this->Load += gcnew System::EventHandler(this, &Paciente::Paciente_Load);
@@ -359,13 +339,12 @@ namespace ClinicaCitas {
 	}
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 		int i = dgvPacientes->CurrentCell->RowIndex;
 		AgregarPaciente obj;
 		//String^ net = msclr::interop::marshal_as<String^>(dgvPacientes->Rows[i]->Cells[0]->Value);
 		obj.estaAgregando = false;
+		obj.Cod->Enabled = false;
 		obj.Cod->Text = dgvPacientes->Rows[i]->Cells[0]->Value->ToString();
 		obj.Nom->Text = dgvPacientes->Rows[i]->Cells[1]->Value->ToString();
 		obj.Ape->Text = dgvPacientes->Rows[i]->Cells[2]->Value->ToString();
@@ -377,6 +356,14 @@ namespace ClinicaCitas {
 	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
 		AgregarPaciente obj;
 		obj.estaAgregando = true;
+		String^ cod = txtcod->Text;
+		//std::vector<String^> stringVector;
+		List<String^>^ cods = gcnew List<String^>();
+		for each (DataGridViewRow ^ row in dgvPacientes->Rows) {
+			//stringVector.push_back(row->Cells[0]->Value->ToString());
+			cods->Add(row->Cells[0]->Value->ToString());
+		}
+		obj.cods = cods;
 		obj.ShowDialog();
 		dgvPacientes->Rows->Clear();
 		ReLoad();
@@ -386,6 +373,26 @@ private: System::Void dgvPacientes_CellClick(System::Object^ sender, System::Win
 	
 }
 private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (txtcod->Text->Trim()->Length != 0) {
+		String^ cod= txtcod->Text;
+		for each (DataGridViewRow ^ row in dgvPacientes->Rows) {
+			// Verificar si la celda en la columna específica contiene el valor buscado
+			if (row->Cells[0]->Value != nullptr && row->Cells[0]->Value->ToString() == cod->ToString()) {
+				MessageBox::Show(row->Cells[0]->Value + " - " + row->Cells[1]->Value + " - " + row->Cells[2]->Value, "Código Encontrado", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				dgvPacientes->CurrentCell = row->Cells[0];
+				return;
+			}
+		}
+		MessageBox::Show("No hay ningún paciente registrado con ese código", "Código No Encontrado", MessageBoxButtons::OK, MessageBoxIcon::Information);
+	}
+}
+private: System::Void txtcod_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
+	if (!Char::IsDigit(e->KeyChar) && e->KeyChar != '\b') {
+		// Si no es un dígito ni una tecla especial, cancela el evento KeyPress para evitar que se ingrese el carácter
+		e->Handled = true;
+	}
 }
 };
 }

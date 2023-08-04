@@ -84,6 +84,7 @@
       <AdditionalDependencies />
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>main</EntryPointSymbol>
+      <UACExecutionLevel>AsInvoker</UACExecutionLevel>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -182,6 +183,7 @@
   <ItemGroup>
     <None Include="listaCita.dat" />
     <None Include="medicosH.dat" />
+    <None Include="medicosH_temp.dat" />
     <None Include="pacientes.dat" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

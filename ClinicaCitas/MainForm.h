@@ -44,6 +44,7 @@ namespace ClinicaCitas {
 
 	private: System::Windows::Forms::Button^ button4;
 	private: System::Windows::Forms::Button^ button5;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
 
 	private:
 		/// <summary>
@@ -58,11 +59,14 @@ namespace ClinicaCitas {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->button5 = (gcnew System::Windows::Forms::Button());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
@@ -80,7 +84,7 @@ namespace ClinicaCitas {
 			// 
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(28, 62);
+			this->button1->Location = System::Drawing::Point(50, 84);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(100, 34);
 			this->button1->TabIndex = 1;
@@ -92,7 +96,7 @@ namespace ClinicaCitas {
 			// 
 			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(28, 118);
+			this->button2->Location = System::Drawing::Point(50, 140);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(100, 34);
 			this->button2->TabIndex = 2;
@@ -104,7 +108,7 @@ namespace ClinicaCitas {
 			// 
 			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button4->Location = System::Drawing::Point(28, 179);
+			this->button4->Location = System::Drawing::Point(50, 201);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(100, 34);
 			this->button4->TabIndex = 4;
@@ -116,25 +120,40 @@ namespace ClinicaCitas {
 			// 
 			this->button5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button5->Location = System::Drawing::Point(211, 302);
+			this->button5->Location = System::Drawing::Point(218, 275);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(134, 34);
 			this->button5->TabIndex = 5;
-			this->button5->Text = L"Ver Estadísticas";
+			this->button5->Text = L"Cerrar programa";
 			this->button5->UseVisualStyleBackColor = true;
+			this->button5->Click += gcnew System::EventHandler(this, &MainForm::button5_Click);
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(281, 84);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(143, 151);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox1->TabIndex = 6;
+			this->pictureBox1->TabStop = false;
 			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::SystemColors::GradientActiveCaption;
 			this->ClientSize = System::Drawing::Size(558, 369);
+			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->button5);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label1);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"MainForm";
 			this->Text = L"ClinicaCitas";
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -152,5 +171,8 @@ namespace ClinicaCitas {
 		Paciente obj;
 		obj.ShowDialog();
 	}
+private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Close();
+}
 };
 }

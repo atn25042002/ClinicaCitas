@@ -118,6 +118,7 @@ namespace ClinicaCitas {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(AgregarCita::typeid));
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -217,6 +218,7 @@ namespace ClinicaCitas {
 			// mcfecha
 			// 
 			this->mcfecha->Location = System::Drawing::Point(443, 81);
+			this->mcfecha->MaxSelectionCount = 1;
 			this->mcfecha->Name = L"mcfecha";
 			this->mcfecha->TabIndex = 40;
 			// 
@@ -297,6 +299,7 @@ namespace ClinicaCitas {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::PaleGoldenrod;
 			this->ClientSize = System::Drawing::Size(709, 368);
 			this->Controls->Add(this->cboCons);
 			this->Controls->Add(this->cbohora);
@@ -311,6 +314,7 @@ namespace ClinicaCitas {
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"AgregarCita";
 			this->Text = L"AgregarCita";
 			this->Load += gcnew System::EventHandler(this, &AgregarCita::AgregarCita_Load);
