@@ -44,6 +44,13 @@ namespace ClinicaCitas {
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::ComboBox^ comboBox2;
 	private: System::Windows::Forms::ComboBox^ comboBox1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Lunes;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Martes;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Miercoles;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Jueves;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Viernes;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Sabado;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Domingo;
 
 
 	protected:
@@ -64,6 +71,13 @@ namespace ClinicaCitas {
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Doctor::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->dgvDoctor = (gcnew System::Windows::Forms::DataGridView());
+			this->Lunes = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Martes = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Miercoles = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Jueves = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Viernes = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Sabado = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Domingo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -87,11 +101,60 @@ namespace ClinicaCitas {
 			// 
 			// dgvDoctor
 			// 
+			this->dgvDoctor->AllowUserToAddRows = false;
+			this->dgvDoctor->AllowUserToDeleteRows = false;
 			this->dgvDoctor->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dgvDoctor->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
+				this->Lunes, this->Martes,
+					this->Miercoles, this->Jueves, this->Viernes, this->Sabado, this->Domingo
+			});
 			this->dgvDoctor->Location = System::Drawing::Point(22, 170);
 			this->dgvDoctor->Name = L"dgvDoctor";
+			this->dgvDoctor->ReadOnly = true;
 			this->dgvDoctor->Size = System::Drawing::Size(712, 276);
 			this->dgvDoctor->TabIndex = 2;
+			// 
+			// Lunes
+			// 
+			this->Lunes->HeaderText = L"Lunes";
+			this->Lunes->Name = L"Lunes";
+			this->Lunes->ReadOnly = true;
+			// 
+			// Martes
+			// 
+			this->Martes->HeaderText = L"Martes";
+			this->Martes->Name = L"Martes";
+			this->Martes->ReadOnly = true;
+			// 
+			// Miercoles
+			// 
+			this->Miercoles->HeaderText = L"Miercoles";
+			this->Miercoles->Name = L"Miercoles";
+			this->Miercoles->ReadOnly = true;
+			// 
+			// Jueves
+			// 
+			this->Jueves->HeaderText = L"Jueves";
+			this->Jueves->Name = L"Jueves";
+			this->Jueves->ReadOnly = true;
+			// 
+			// Viernes
+			// 
+			this->Viernes->HeaderText = L"Viernes";
+			this->Viernes->Name = L"Viernes";
+			this->Viernes->ReadOnly = true;
+			// 
+			// Sabado
+			// 
+			this->Sabado->HeaderText = L"Sabado";
+			this->Sabado->Name = L"Sabado";
+			this->Sabado->ReadOnly = true;
+			// 
+			// Domingo
+			// 
+			this->Domingo->HeaderText = L"Domingo";
+			this->Domingo->Name = L"Domingo";
+			this->Domingo->ReadOnly = true;
 			// 
 			// pictureBox1
 			// 
@@ -167,6 +230,7 @@ namespace ClinicaCitas {
 			this->Controls->Add(this->dgvDoctor);
 			this->Controls->Add(this->label1);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->MaximizeBox = false;
 			this->Name = L"Doctor";
 			this->Text = L"Rotacion";
 			this->Load += gcnew System::EventHandler(this, &Doctor::Doctor_Load);
@@ -178,14 +242,19 @@ namespace ClinicaCitas {
 		}
 #pragma endregion
 	private: System::Void Doctor_Load(System::Object^ sender, System::EventArgs^ e) {
-		this->dgvDoctor->ColumnCount = 6;
-		this->dgvDoctor->Columns[0]->Name= "ID";
-		this->dgvDoctor->Columns[1]->Name = "Apellidos";
-		this->dgvDoctor->Columns[2]->Name = "Nombres";
-		this->dgvDoctor->Columns[3]->Name = "Especialidad";
-		this->dgvDoctor->Columns[4]->Name = "Celular";
-		this->dgvDoctor->Columns[5]->Name = "Est. Registro";
 	}
+
+	private: System::Void LoadCitas() {
+		//std::vector<Paciente> v= Leer();
+		//std::cout <<  "--->" << Leer()[0].nombres << std::endl;
+		//std::vector<Estructura::MedicoH> citas = leerMedH();
+		//String^ net = msclr::interop::marshal_as<String^>(Leer()[0].nombres
+		/*for (int i = 0; i < citas.size(); i++) {
+			int hora = citas[i].fechaCita.hora;
+			int min = citas[i].fechaCita.minutos;
+		}*/
+	}
+
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {

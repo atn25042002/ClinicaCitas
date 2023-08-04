@@ -275,6 +275,7 @@ namespace ClinicaCitas {
 			this->Controls->Add(this->txtcod);
 			this->Controls->Add(this->label1);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->MaximizeBox = false;
 			this->Name = L"Paciente";
 			this->Text = L"Paciente";
 			this->Load += gcnew System::EventHandler(this, &Paciente::Paciente_Load);
@@ -356,8 +357,6 @@ namespace ClinicaCitas {
 	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
 		AgregarPaciente obj;
 		obj.estaAgregando = true;
-		String^ cod = txtcod->Text;
-		//std::vector<String^> stringVector;
 		List<String^>^ cods = gcnew List<String^>();
 		for each (DataGridViewRow ^ row in dgvPacientes->Rows) {
 			//stringVector.push_back(row->Cells[0]->Value->ToString());

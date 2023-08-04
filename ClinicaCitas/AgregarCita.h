@@ -2,6 +2,7 @@
 #include <vector>
 #include "crudMediCoHorInterface.h"
 #include <string>
+#include <list>
 #include <msclr/marshal_cppstd.h>
 #include <sstream>
 
@@ -14,6 +15,7 @@ namespace ClinicaCitas {
 	using namespace System::Data;
 	using namespace System::Drawing;
 	using namespace System::Runtime::InteropServices;
+	using namespace System::Collections::Generic;
 
 	/// <summary>
 	/// Resumen de AgregarCita
@@ -44,8 +46,7 @@ namespace ClinicaCitas {
 	protected:
 
 	public: bool estaAgregando = true;
-
-
+	public: List<String^>^ cods = gcnew List<String^>();
 
 	private:
 
@@ -71,10 +72,14 @@ namespace ClinicaCitas {
 	public: System::Windows::Forms::ComboBox^ cboPaciente;
 	private:
 
-	private: System::Windows::Forms::ComboBox^ cboMedico;
-	private: System::Windows::Forms::ComboBox^ cboEsp;
-	private: System::Windows::Forms::ComboBox^ cbohora;
-	private: System::Windows::Forms::ComboBox^ cboCons;
+	public: System::Windows::Forms::ComboBox^ cboMedico;
+	public: System::Windows::Forms::ComboBox^ cboEsp;
+	public: System::Windows::Forms::ComboBox^ cbohora;
+	public: System::Windows::Forms::ComboBox^ cboCons;
+	public: System::Windows::Forms::TextBox^ Cod;
+	private:
+	private: System::Windows::Forms::Label^ label5;
+	public:
 	public:
 
 	public:
@@ -132,6 +137,8 @@ namespace ClinicaCitas {
 			this->cboEsp = (gcnew System::Windows::Forms::ComboBox());
 			this->cbohora = (gcnew System::Windows::Forms::ComboBox());
 			this->cboCons = (gcnew System::Windows::Forms::ComboBox());
+			this->Cod = (gcnew System::Windows::Forms::TextBox());
+			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// label4
@@ -151,7 +158,7 @@ namespace ClinicaCitas {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(43, 162);
+			this->label3->Location = System::Drawing::Point(43, 133);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(117, 18);
 			this->label3->TabIndex = 27;
@@ -162,7 +169,7 @@ namespace ClinicaCitas {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(43, 130);
+			this->label2->Location = System::Drawing::Point(43, 165);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(85, 18);
 			this->label2->TabIndex = 26;
@@ -228,7 +235,7 @@ namespace ClinicaCitas {
 			this->cboPaciente->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->cboPaciente->FormattingEnabled = true;
-			this->cboPaciente->Location = System::Drawing::Point(166, 127);
+			this->cboPaciente->Location = System::Drawing::Point(166, 162);
 			this->cboPaciente->Name = L"cboPaciente";
 			this->cboPaciente->Size = System::Drawing::Size(235, 26);
 			this->cboPaciente->TabIndex = 43;
@@ -262,7 +269,7 @@ namespace ClinicaCitas {
 					L"Cardiología", L"Dermatología", L"Oftalmología", L"Otorrinolaringología (ORL)", L"Ortopedia y Traumatología", L"Neurología",
 					L"Psiquiatría", L"Endocrinología", L"Nefrología", L"Gastroenterología", L"Urología", L"Oncología"
 			});
-			this->cboEsp->Location = System::Drawing::Point(166, 159);
+			this->cboEsp->Location = System::Drawing::Point(166, 130);
 			this->cboEsp->Name = L"cboEsp";
 			this->cboEsp->Size = System::Drawing::Size(235, 26);
 			this->cboEsp->TabIndex = 41;
@@ -295,12 +302,35 @@ namespace ClinicaCitas {
 			this->cboCons->Size = System::Drawing::Size(235, 26);
 			this->cboCons->TabIndex = 45;
 			// 
+			// Cod
+			// 
+			this->Cod->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->Cod->Location = System::Drawing::Point(166, 65);
+			this->Cod->Name = L"Cod";
+			this->Cod->Size = System::Drawing::Size(235, 27);
+			this->Cod->TabIndex = 47;
+			this->Cod->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &AgregarCita::Cod_KeyPress);
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label5->Location = System::Drawing::Point(43, 68);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(71, 18);
+			this->label5->TabIndex = 46;
+			this->label5->Text = L"Código:";
+			// 
 			// AgregarCita
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::PaleGoldenrod;
 			this->ClientSize = System::Drawing::Size(709, 368);
+			this->Controls->Add(this->Cod);
+			this->Controls->Add(this->label5);
 			this->Controls->Add(this->cboCons);
 			this->Controls->Add(this->cbohora);
 			this->Controls->Add(this->cboPaciente);
@@ -315,6 +345,7 @@ namespace ClinicaCitas {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->MaximizeBox = false;
 			this->Name = L"AgregarCita";
 			this->Text = L"AgregarCita";
 			this->Load += gcnew System::EventHandler(this, &AgregarCita::AgregarCita_Load);
@@ -335,6 +366,7 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 	this->Close();
 }
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {	
+	std::string citacod = msclr::interop::marshal_as<std::string>(this->Cod->Text);
 	std::string nomMed = msclr::interop::marshal_as<std::string>(this->cboMedico->Text);
 	std::string nomPac = msclr::interop::marshal_as<std::string>(this->cboPaciente->Text);
 	std::string esp = msclr::interop::marshal_as<std::string>(this->cboEsp->Text);
@@ -348,14 +380,25 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 	fecha.hora = stoi(hors.substr(0, 2));
 	fecha.minutos = stoi(hors.substr(3, 5));
 	if (estaAgregando) {
-		crearMedH(1, nomMed.c_str(), nomPac.c_str(), 1, esp.c_str(),fecha, consul.c_str());
-		//String^ resultado = String::Concat(fecha.hora, " - ", fecha.minutos);
-		//label4->Text = resultado;
+		//crearMedH(stoi(citacod), nomMed.c_str(), nomPac.c_str(), 1, esp.c_str(), fecha, consul.c_str());
+		if (cods->Contains(this->Cod->Text)) {
+			MessageBox::Show("Ya existe un paciente registrado con ese código", "Código Repetido", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			return;
+		}
+		else {
+			crearMedH(stoi(citacod), nomMed.c_str(), nomPac.c_str(), 1, esp.c_str(), fecha, consul.c_str());
+		}
 	}
 	else {
-		//Actualizar(stoi(codigo), nombre.c_str(), apellido.c_str(), stoi(telefono));
+		ActualizarMedH(stoi(citacod), nomMed.c_str(), nomPac.c_str(), 1, esp.c_str(), fecha, consul.c_str());
 	}
 	this->Close();
+}
+private: System::Void Cod_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
+	if (!Char::IsDigit(e->KeyChar) && e->KeyChar != '\b') {
+		// Si no es un dígito ni una tecla especial, cancela el evento KeyPress para evitar que se ingrese el carácter
+		e->Handled = true;
+	}
 }
 };
 }

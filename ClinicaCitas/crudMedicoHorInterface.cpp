@@ -107,7 +107,7 @@ void crearMedH(int cod, const char* nombreMed, const char* nombrePac, int medCmp
 	//intentando modificar un dato que fijo como char[50]
 
 	FILE* archivo = fopen(nombre_archivoMedH, "a+b");
-	Estructura::MedicoH medico = {};
+	Estructura::MedicoH medico;
 	fflush(stdin);//limpia buffer de entrada y salida
 	medico.citaCod = cod;
 	strcpy(medico.medNom, nombreMed);

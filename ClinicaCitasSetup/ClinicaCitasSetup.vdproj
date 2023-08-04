@@ -15,7 +15,19 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_3D9803A788644D94A6A8AA9210574053"
+        "MsmKey" = "8:_24EF79DC2E024DED982AF2647E36A79E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_39006D8865BE47DEA4738A4CA7CA42D6"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4AE37B59A7824EBBA72AC5B1F4F1AB0B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -27,26 +39,32 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_679B52C3D26D4AB9ADC2F138BF105929"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_73BDD3A8800EAFDF0DD3D6174A5907FA"
         "OwnerKey" = "8:_EDF7570E1D534D89BBBA5CB9C57CF7AC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_79884BE799A94CEC92A14E67999A8C80"
+        "MsmKey" = "8:_899B67E7F87FBB54DFD36D887827187C"
+        "OwnerKey" = "8:_EDF7570E1D534D89BBBA5CB9C57CF7AC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_956D71A5C7B14050938CCB814D2992EE"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_899B67E7F87FBB54DFD36D887827187C"
-        "OwnerKey" = "8:_EDF7570E1D534D89BBBA5CB9C57CF7AC"
+        "MsmKey" = "8:_A229A6AC7E0145C5ACD29DAD31F97D04"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D7A2F1F838604A009A39EE0CDD13B3F9"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -162,10 +180,50 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3D9803A788644D94A6A8AA9210574053"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_24EF79DC2E024DED982AF2647E36A79E"
             {
-            "SourcePath" = "8:..\\ClinicaCitas\\pacientes.dat"
-            "TargetName" = "8:pacientes.dat"
+            "SourcePath" = "8:..\\ClinicaCitas\\medicosH_temp.dat"
+            "TargetName" = "8:medicosH_temp.dat"
+            "Tag" = "8:"
+            "Folder" = "8:_BBFD059FEF2342F2B8AC4DDF5C30D9CC"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_39006D8865BE47DEA4738A4CA7CA42D6"
+            {
+            "SourcePath" = "8:..\\ClinicaCitas\\pacientes_temp.dat"
+            "TargetName" = "8:pacientes_temp.dat"
+            "Tag" = "8:"
+            "Folder" = "8:_BBFD059FEF2342F2B8AC4DDF5C30D9CC"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4AE37B59A7824EBBA72AC5B1F4F1AB0B"
+            {
+            "SourcePath" = "8:..\\ClinicaCitas\\listaCita.dat"
+            "TargetName" = "8:listaCita.dat"
             "Tag" = "8:"
             "Folder" = "8:_BBFD059FEF2342F2B8AC4DDF5C30D9CC"
             "Condition" = "8:"
@@ -202,26 +260,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_679B52C3D26D4AB9ADC2F138BF105929"
-            {
-            "SourcePath" = "8:..\\ClinicaCitas\\pacientes_temp.dat"
-            "TargetName" = "8:pacientes_temp.dat"
-            "Tag" = "8:"
-            "Folder" = "8:_BBFD059FEF2342F2B8AC4DDF5C30D9CC"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_73BDD3A8800EAFDF0DD3D6174A5907FA"
             {
             "SourcePath" = "8:ucrtbased.dll"
@@ -242,7 +280,47 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_79884BE799A94CEC92A14E67999A8C80"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_899B67E7F87FBB54DFD36D887827187C"
+            {
+            "SourcePath" = "8:VCRUNTIME140D.dll"
+            "TargetName" = "8:VCRUNTIME140D.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_BBFD059FEF2342F2B8AC4DDF5C30D9CC"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_956D71A5C7B14050938CCB814D2992EE"
+            {
+            "SourcePath" = "8:..\\ClinicaCitas\\archivo_temp.dat"
+            "TargetName" = "8:archivo_temp.dat"
+            "Tag" = "8:"
+            "Folder" = "8:_BBFD059FEF2342F2B8AC4DDF5C30D9CC"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A229A6AC7E0145C5ACD29DAD31F97D04"
             {
             "SourcePath" = "8:..\\ClinicaCitas\\medicosH.dat"
             "TargetName" = "8:medicosH.dat"
@@ -262,10 +340,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_899B67E7F87FBB54DFD36D887827187C"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D7A2F1F838604A009A39EE0CDD13B3F9"
             {
-            "SourcePath" = "8:VCRUNTIME140D.dll"
-            "TargetName" = "8:VCRUNTIME140D.dll"
+            "SourcePath" = "8:..\\ClinicaCitas\\pacientes.dat"
+            "TargetName" = "8:pacientes.dat"
             "Tag" = "8:"
             "Folder" = "8:_BBFD059FEF2342F2B8AC4DDF5C30D9CC"
             "Condition" = "8:"
@@ -279,7 +357,7 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F198C2C78A54B4E2B213D0BAAF2CDFB9"
@@ -359,7 +437,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ClinicaCitasSetup"
         "ProductCode" = "8:{A47FAB1D-F48D-45B6-A7A1-34407CE4FD17}"
-        "PackageCode" = "8:{E7A92CC1-BC73-45A0-9056-F424EADDCD47}"
+        "PackageCode" = "8:{3DF8F003-ECB4-4FA2-B553-E3BAF00FF0E3}"
         "UpgradeCode" = "8:{83536660-FDE0-4FC2-96DB-97FF551AE260}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

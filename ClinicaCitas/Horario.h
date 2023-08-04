@@ -123,6 +123,7 @@ namespace ClinicaCitas {
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->label4);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->MaximizeBox = false;
 			this->Name = L"Horario";
 			this->Text = L"Horario";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();

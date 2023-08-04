@@ -84,19 +84,20 @@ namespace ClinicaCitas {
 			// 
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(50, 84);
+			this->button1->Location = System::Drawing::Point(12, 38);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(100, 34);
 			this->button1->TabIndex = 1;
 			this->button1->Text = L"Rotación";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Visible = false;
 			this->button1->Click += gcnew System::EventHandler(this, &MainForm::button1_Click);
 			// 
 			// button2
 			// 
 			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(50, 140);
+			this->button2->Location = System::Drawing::Point(38, 118);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(100, 34);
 			this->button2->TabIndex = 2;
@@ -108,7 +109,7 @@ namespace ClinicaCitas {
 			// 
 			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button4->Location = System::Drawing::Point(50, 201);
+			this->button4->Location = System::Drawing::Point(38, 179);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(100, 34);
 			this->button4->TabIndex = 4;
@@ -120,7 +121,7 @@ namespace ClinicaCitas {
 			// 
 			this->button5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button5->Location = System::Drawing::Point(218, 275);
+			this->button5->Location = System::Drawing::Point(267, 256);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(134, 34);
 			this->button5->TabIndex = 5;
@@ -131,7 +132,7 @@ namespace ClinicaCitas {
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(281, 84);
+			this->pictureBox1->Location = System::Drawing::Point(258, 83);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(143, 151);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
